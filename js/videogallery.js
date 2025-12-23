@@ -99,114 +99,92 @@ const videos = [
         description: "Подробный мастер-класс по работе с основным производственным оборудованием компании.",
         img: "", 
     }
-];
+]
 
-let currentVideoFilter = 'all';
-let currentVideoPage = 1;
-const videosPerPage = 6;
-let filteredVideos = [...videos];
+let currentVideoFilter = 'all'
+let currentVideoPage = 1
+const videosPerPage = 6
+let filteredVideos = [...videos]
 
 const altVideo = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NTI0MjQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbWVyYS1vZmYtaWNvbiBsdWNpZGUtY2FtZXJhLW9mZiI+PHBhdGggZD0iTTE0LjU2NCAxNC41NThhMyAzIDAgMSAxLTQuMTIyLTQuMTIxIi8+PHBhdGggZD0ibTIgMiAyMCAyMCIvPjxwYXRoIGQ9Ik0yMCAyMEg0YTIgMiAwIDAgMS0yLTJWOWEyIDIgMCAwIDEgMi0yaDEuOTk3YTIgMiAwIDAgMCAuODE5LS4xNzUiLz48cGF0aCBkPSJNOS42OTUgNC4wMjRBMiAyIDAgMCAxIDEwLjAwNCA0aDMuOTkzYTIgMiAwIDAgMSAxLjc2IDEuMDVsLjQ4Ni45QTIgMiAwIDAgMCAxOC4wMDMgN0gyMGEyIDIgMCAwIDEgMiAydjcuMzQ0Ii8+PC9zdmc+'
 
-const videoGrid = document.getElementById('video-grid');
-const videoSearch = document.getElementById('video-search');
-const videoFilterButtons = document.querySelectorAll('.filter-btn'); // Убрали #videos-page
-const videoSort = document.getElementById('video-sort');
-const prevVideoPageBtn = document.getElementById('prev-video-page');
-const nextVideoPageBtn = document.getElementById('next-video-page');
-const videoPageNumbers = document.getElementById('video-page-numbers');
+const videoGrid = document.getElementById('video-grid')
+const videoSearch = document.getElementById('video-search')
+const videoFilterButtons = document.querySelectorAll('.filter-btn')
+const videoSort = document.getElementById('video-sort')
+const prevVideoPageBtn = document.getElementById('prev-video-page')
+const nextVideoPageBtn = document.getElementById('next-video-page')
+const videoPageNumbers = document.getElementById('video-page-numbers')
 
-// Инициализация видеогалереи
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Видеогалерея загружена. Найдено кнопок фильтра:', videoFilterButtons.length);
-    initVideoGallery();
-});
+    initVideoGallery()
+})
 
-// Инициализация видеогалереи
 function initVideoGallery() {
-    console.log('Инициализация видеогалереи');
-    renderVideos();
-    setupVideoEventListeners();
-    updateVideoPagination();
+    renderVideos()
+    setupVideoEventListeners()
+    updateVideoPagination()
 }
 
-// Настройка обработчиков событий для видеогалереи
 function setupVideoEventListeners() {
-    console.log('Настройка обработчиков событий');
-    
-    // Поиск видео
     if (videoSearch) {
         videoSearch.addEventListener('input', function() {
-            console.log('Поиск:', this.value);
-            filterVideos();
-        });
+            console.log('Поиск:', this.value)
+            filterVideos()
+        })
     }
     
-    // Фильтры - ВАЖНО: используем правильный селектор
-    console.log('Кнопки фильтра найдены:', videoFilterButtons.length);
     videoFilterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            console.log('Кликнута кнопка фильтра:', this.getAttribute('data-filter'));
-            
-            // Обновление активной кнопки фильтра
             document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            this.classList.add('active');
+                btn.classList.remove('active')
+            })
+            this.classList.add('active')
             
-            currentVideoFilter = this.getAttribute('data-filter');
-            console.log('Текущий фильтр установлен:', currentVideoFilter);
-            currentVideoPage = 1;
-            filterVideos();
-        });
-    });
-    
-    // Сортировка
+            currentVideoFilter = this.getAttribute('data-filter')
+            currentVideoPage = 1
+            filterVideos()
+        })
+    })
+
     if (videoSort) {
         videoSort.addEventListener('change', function() {
-            filterVideos();
-        });
+            filterVideos()
+        })
     }
     
-    // Пагинация
     if (prevVideoPageBtn) {
         prevVideoPageBtn.addEventListener('click', function() {
             if (currentVideoPage > 1) {
-                currentVideoPage--;
-                renderVideos();
-                updateVideoPagination();
+                currentVideoPage--
+                renderVideos()
+                updateVideoPagination()
             }
-        });
+        })
     }
     
     if (nextVideoPageBtn) {
         nextVideoPageBtn.addEventListener('click', function() {
             const totalPages = Math.ceil(filteredVideos.length / videosPerPage);
             if (currentVideoPage < totalPages) {
-                currentVideoPage++;
-                renderVideos();
-                updateVideoPagination();
+                currentVideoPage++
+                renderVideos()
+                updateVideoPagination()
             }
         });
     }
 }
 
-// Отображение видео
 function renderVideos() {
     if (!videoGrid) {
-        console.error('Контейнер видео не найден!');
         return;
     }
     
-    console.log('Рендеринг видео. Всего отфильтровано:', filteredVideos.length);
-    
     videoGrid.innerHTML = '';
     
-    const startIndex = (currentVideoPage - 1) * videosPerPage;
-    const endIndex = startIndex + videosPerPage;
-    const videosToShow = filteredVideos.slice(startIndex, endIndex);
-    
-    console.log('Показываем видео:', videosToShow.length, 'с', startIndex, 'по', endIndex);
+    const startIndex = (currentVideoPage - 1) * videosPerPage
+    const endIndex = startIndex + videosPerPage
+    const videosToShow = filteredVideos.slice(startIndex, endIndex)
     
     if (videosToShow.length === 0) {
         videoGrid.innerHTML = `
@@ -215,13 +193,13 @@ function renderVideos() {
                 <i class="fas fa-search" style="font-size: 3rem; color: var(--complementary-color); margin-bottom: 1rem;"></i>
                 <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Видео не найдены</h3>
                 <p>Попробуйте изменить параметры поиска или фильтрации</p>
-            </div>`;
-        return;
+            </div>`
+        return
     }
     
     videosToShow.forEach(video => {
-        const videoElement = document.createElement('div');
-        videoElement.className = `video-item ${video.category}`;
+        const videoElement = document.createElement('div')
+        videoElement.className = `video-item ${video.category}`
         
         videoElement.innerHTML = `
             <div class="video-thumbnail" style='width: 100px; height: 100px; margin: 0 auto;'>
@@ -239,74 +217,61 @@ function renderVideos() {
                 </div>
                 <p class="video-description">${video.description}</p>
             </div>
-        `;
+        `
         
-        videoGrid.appendChild(videoElement);
-    });
+        videoGrid.appendChild(videoElement)
+    })
 }
 
-// Фильтрация и сортировка видео
 function filterVideos() {
-    console.log('=== ФИЛЬТРАЦИЯ ВИДЕО ===');
-    console.log('Текущий фильтр:', currentVideoFilter);
+    console.log(' ФИЛЬТРАЦИЯ ВИДЕО ')
+    console.log('Текущий фильтр:', currentVideoFilter)
     
-    const searchTerm = videoSearch ? videoSearch.value.toLowerCase() : '';
-    console.log('Поисковый запрос:', searchTerm);
+    const searchTerm = videoSearch ? videoSearch.value.toLowerCase() : ''
+    console.log('Поисковый запрос:', searchTerm)
     
-    // Фильтрация
     filteredVideos = videos.filter(video => {
-        const matchesSearch = video.title.toLowerCase().includes(searchTerm) || 
-                             video.description.toLowerCase().includes(searchTerm) ||
-                             video.date.includes(searchTerm);
-        const matchesFilter = currentVideoFilter === 'all' || video.category === currentVideoFilter;
+        const matchesSearch = video.title.toLowerCase().includes(searchTerm) || video.description.toLowerCase().includes(searchTerm) || video.date.includes(searchTerm)
+        const matchesFilter = currentVideoFilter === 'all' || video.category === currentVideoFilter
         
-        console.log(`Видео "${video.title}": категория=${video.category}, поиск=${matchesSearch}, фильтр=${matchesFilter}`);
-        
-        return matchesSearch && matchesFilter;
-    });
+        return matchesSearch && matchesFilter
+    })
     
-    console.log('После фильтрации осталось:', filteredVideos.length, 'видео');
-    
-    // Сортировка
-    const sortOption = videoSort ? videoSort.value : 'newest';
-    console.log('Сортировка по:', sortOption);
+    const sortOption = videoSort ? videoSort.value : 'newest'
     
     filteredVideos.sort((a, b) => {
         switch(sortOption) {
             case 'oldest':
-                return new Date(a.date.split('.').reverse().join('-')) - new Date(b.date.split('.').reverse().join('-'));
-            case 'name':
-                return a.title.localeCompare(b.title);
+                return new Date(a.date.split('.').reverse().join('-')) - new Date(b.date.split('.').reverse().join('-'))
             case 'duration':
-                return parseDuration(a.duration) - parseDuration(b.duration);
+                return parseDuration(a.duration) - parseDuration(b.duration)
             case 'newest':
             default:
-                return new Date(b.date.split('.').reverse().join('-')) - new Date(a.date.split('.').reverse().join('-'));
+                return new Date(b.date.split('.').reverse().join('-')) - new Date(a.date.split('.').reverse().join('-'))
         }
     });
     
-    currentVideoPage = 1;
-    renderVideos();
-    updateVideoPagination();
+    currentVideoPage = 1
+    renderVideos()
+    updateVideoPagination()
 }
 
-// Парсинг длительности видео (минуты:секунды)
 function parseDuration(duration) {
     const parts = duration.split(':');
     return parseInt(parts[0]) * 60 + parseInt(parts[1]);
 }
 
 function updateVideoPagination() {
-    if (!videoPageNumbers || !prevVideoPageBtn || !nextVideoPageBtn) return;
+    if (!videoPageNumbers || !prevVideoPageBtn || !nextVideoPageBtn) return
     
-    const totalPages = Math.ceil(filteredVideos.length / videosPerPage);
+    const totalPages = Math.ceil(filteredVideos.length / videosPerPage)
     
-    prevVideoPageBtn.disabled = currentVideoPage === 1;
-    nextVideoPageBtn.disabled = currentVideoPage === totalPages || totalPages === 0;
+    prevVideoPageBtn.disabled = currentVideoPage === 1
+    nextVideoPageBtn.disabled = currentVideoPage === totalPages || totalPages === 0
     
-    videoPageNumbers.innerHTML = '';
+    videoPageNumbers.innerHTML = ''
     
-    if (totalPages <= 1) return;
+    if (totalPages <= 1) return
     
     addVideoPageNumber(1)
     

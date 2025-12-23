@@ -255,7 +255,7 @@ function filterPhotos() {
             default:
                 return new Date(b.date.split('.').reverse().join('-')) - new Date(a.date.split('.').reverse().join('-'));
         }
-    });
+    })
     
     currentPhotoPage = 1
     renderPhotos()
