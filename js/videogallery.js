@@ -1,0 +1,339 @@
+const videos = [
+    { 
+        id: 1, 
+        title: "Презентация нового оборудования", 
+        duration: "5:24", 
+        date: "15.05.2023",
+        views: "1.2K",
+        category: "presentation", 
+        description: "Подробный обзор нового производственного оборудования, внедренного в 2023 году. Демонстрация возможностей и преимуществ.",
+        img: "", 
+    },
+    { 
+        id: 2, 
+        title: "Репортаж с корпоратива", 
+        duration: "8:12", 
+        date: "10.04.2023",
+        views: "2.4K",
+        category: "report", 
+        description: "Яркие моменты с ежегодного корпоративного мероприятия компании. Интервью с сотрудниками и руководством.",
+        img: "", 
+    },
+    { 
+        id: 3, 
+        title: "Интервью с генеральным директором", 
+        duration: "12:45", 
+        date: "28.03.2023",
+        views: "3.1K",
+        category: "interview", 
+        description: "Беседа с руководителем компании о планах развития и новых проектах. Ответы на вопросы о будущем компании.",
+        img: "", 
+    },
+    { 
+        id: 4, 
+        title: "Экскурсия по производству", 
+        duration: "7:33", 
+        date: "22.02.2023",
+        views: "1.8K",
+        category: "report", 
+        description: "Видеотур по основным производственным площадкам компании. Показ всех этапов производства продукции.",
+        img: "", 
+    },
+    { 
+        id: 5, 
+        title: "Презентация годовых результатов", 
+        duration: "15:20", 
+        date: "20.01.2023",
+        views: "2.7K",
+        category: "presentation", 
+        description: "Отчет о деятельности компании за 2022 год и планы на будущее. Финансовые показатели и достижения.",
+        img: "", 
+    },
+    { 
+        id: 6, 
+        title: "Интервью с ведущим инженером", 
+        duration: "9:15", 
+        date: "15.12.2022",
+        views: "1.5K",
+        category: "interview", 
+        description: "Рассказ о технических инновациях и разработках компании. Объяснение сложных технологий простым языком.",
+        img: "", 
+    },
+    { 
+        id: 7, 
+        title: "Обучающий ролик по технике безопасности", 
+        duration: "6:42", 
+        date: "05.11.2022",
+        views: "3.5K",
+        category: "tutorial", 
+        description: "Подробный инструктаж по технике безопасности на производстве. Правила работы с оборудованием.",
+        img: "", 
+    },
+    { 
+        id: 8, 
+        title: "Открытие нового офиса", 
+        duration: "4:18", 
+        date: "28.10.2022",
+        views: "2.1K",
+        category: "event", 
+        description: "Торжественное открытие нового офисного здания компании. Речи руководства и экскурсия по помещениям.",
+        img: "", 
+    },
+    { 
+        id: 9, 
+        title: "Обзор продукции 2022", 
+        duration: "10:30", 
+        date: "12.09.2022",
+        views: "2.9K",
+        category: "presentation", 
+        description: "Полный обзор продукции, выпущенной компанией в 2022 году. Характеристики и области применения.",
+        img: "", 
+    },
+    { 
+        id: 10, 
+        title: "Мастер-класс по работе с оборудованием", 
+        duration: "18:05", 
+        date: "25.08.2022",
+        views: "1.7K",
+        category: "tutorial", 
+        description: "Подробный мастер-класс по работе с основным производственным оборудованием компании.",
+        img: "", 
+    }
+];
+
+let currentVideoFilter = 'all';
+let currentVideoPage = 1;
+const videosPerPage = 6;
+let filteredVideos = [...videos];
+
+const altVideo = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NTI0MjQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbWVyYS1vZmYtaWNvbiBsdWNpZGUtY2FtZXJhLW9mZiI+PHBhdGggZD0iTTE0LjU2NCAxNC41NThhMyAzIDAgMSAxLTQuMTIyLTQuMTIxIi8+PHBhdGggZD0ibTIgMiAyMCAyMCIvPjxwYXRoIGQ9Ik0yMCAyMEg0YTIgMiAwIDAgMS0yLTJWOWEyIDIgMCAwIDEgMi0yaDEuOTk3YTIgMiAwIDAgMCAuODE5LS4xNzUiLz48cGF0aCBkPSJNOS42OTUgNC4wMjRBMiAyIDAgMCAxIDEwLjAwNCA0aDMuOTkzYTIgMiAwIDAgMSAxLjc2IDEuMDVsLjQ4Ni45QTIgMiAwIDAgMCAxOC4wMDMgN0gyMGEyIDIgMCAwIDEgMiAydjcuMzQ0Ii8+PC9zdmc+'
+
+const videoGrid = document.getElementById('video-grid');
+const videoSearch = document.getElementById('video-search');
+const videoFilterButtons = document.querySelectorAll('.filter-btn'); // Убрали #videos-page
+const videoSort = document.getElementById('video-sort');
+const prevVideoPageBtn = document.getElementById('prev-video-page');
+const nextVideoPageBtn = document.getElementById('next-video-page');
+const videoPageNumbers = document.getElementById('video-page-numbers');
+
+// Инициализация видеогалереи
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Видеогалерея загружена. Найдено кнопок фильтра:', videoFilterButtons.length);
+    initVideoGallery();
+});
+
+// Инициализация видеогалереи
+function initVideoGallery() {
+    console.log('Инициализация видеогалереи');
+    renderVideos();
+    setupVideoEventListeners();
+    updateVideoPagination();
+}
+
+// Настройка обработчиков событий для видеогалереи
+function setupVideoEventListeners() {
+    console.log('Настройка обработчиков событий');
+    
+    // Поиск видео
+    if (videoSearch) {
+        videoSearch.addEventListener('input', function() {
+            console.log('Поиск:', this.value);
+            filterVideos();
+        });
+    }
+    
+    // Фильтры - ВАЖНО: используем правильный селектор
+    console.log('Кнопки фильтра найдены:', videoFilterButtons.length);
+    videoFilterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            console.log('Кликнута кнопка фильтра:', this.getAttribute('data-filter'));
+            
+            // Обновление активной кнопки фильтра
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            currentVideoFilter = this.getAttribute('data-filter');
+            console.log('Текущий фильтр установлен:', currentVideoFilter);
+            currentVideoPage = 1;
+            filterVideos();
+        });
+    });
+    
+    // Сортировка
+    if (videoSort) {
+        videoSort.addEventListener('change', function() {
+            filterVideos();
+        });
+    }
+    
+    // Пагинация
+    if (prevVideoPageBtn) {
+        prevVideoPageBtn.addEventListener('click', function() {
+            if (currentVideoPage > 1) {
+                currentVideoPage--;
+                renderVideos();
+                updateVideoPagination();
+            }
+        });
+    }
+    
+    if (nextVideoPageBtn) {
+        nextVideoPageBtn.addEventListener('click', function() {
+            const totalPages = Math.ceil(filteredVideos.length / videosPerPage);
+            if (currentVideoPage < totalPages) {
+                currentVideoPage++;
+                renderVideos();
+                updateVideoPagination();
+            }
+        });
+    }
+}
+
+// Отображение видео
+function renderVideos() {
+    if (!videoGrid) {
+        console.error('Контейнер видео не найден!');
+        return;
+    }
+    
+    console.log('Рендеринг видео. Всего отфильтровано:', filteredVideos.length);
+    
+    videoGrid.innerHTML = '';
+    
+    const startIndex = (currentVideoPage - 1) * videosPerPage;
+    const endIndex = startIndex + videosPerPage;
+    const videosToShow = filteredVideos.slice(startIndex, endIndex);
+    
+    console.log('Показываем видео:', videosToShow.length, 'с', startIndex, 'по', endIndex);
+    
+    if (videosToShow.length === 0) {
+        videoGrid.innerHTML = `
+            <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 3rem; background-color: white; border-radius: 10px;">
+                <img src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzZTE0MTkiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJhbi1pY29uIGx1Y2lkZS1iYW4iPjxwYXRoIGQ9Ik00LjkyOSA0LjkyOSAxOS4wNyAxOS4wNzEiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjwvc3ZnPg=='></img>
+                <i class="fas fa-search" style="font-size: 3rem; color: var(--complementary-color); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Видео не найдены</h3>
+                <p>Попробуйте изменить параметры поиска или фильтрации</p>
+            </div>`;
+        return;
+    }
+    
+    videosToShow.forEach(video => {
+        const videoElement = document.createElement('div');
+        videoElement.className = `video-item ${video.category}`;
+        
+        videoElement.innerHTML = `
+            <div class="video-thumbnail" style='width: 100px; height: 100px; margin: 0 auto;'>
+                <img src="${video.img || altVideo}" alt="${video.title}">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">${video.title}</h3>
+                <div class="video-meta">
+                    <span class="video-duration">${video.duration}</span>
+                    <span class="video-date">${video.date}</span>
+                    <span class="video-views">${video.views} просмотров</span>
+                </div>
+                <p class="video-description">${video.description}</p>
+            </div>
+        `;
+        
+        videoGrid.appendChild(videoElement);
+    });
+}
+
+// Фильтрация и сортировка видео
+function filterVideos() {
+    console.log('=== ФИЛЬТРАЦИЯ ВИДЕО ===');
+    console.log('Текущий фильтр:', currentVideoFilter);
+    
+    const searchTerm = videoSearch ? videoSearch.value.toLowerCase() : '';
+    console.log('Поисковый запрос:', searchTerm);
+    
+    // Фильтрация
+    filteredVideos = videos.filter(video => {
+        const matchesSearch = video.title.toLowerCase().includes(searchTerm) || 
+                             video.description.toLowerCase().includes(searchTerm) ||
+                             video.date.includes(searchTerm);
+        const matchesFilter = currentVideoFilter === 'all' || video.category === currentVideoFilter;
+        
+        console.log(`Видео "${video.title}": категория=${video.category}, поиск=${matchesSearch}, фильтр=${matchesFilter}`);
+        
+        return matchesSearch && matchesFilter;
+    });
+    
+    console.log('После фильтрации осталось:', filteredVideos.length, 'видео');
+    
+    // Сортировка
+    const sortOption = videoSort ? videoSort.value : 'newest';
+    console.log('Сортировка по:', sortOption);
+    
+    filteredVideos.sort((a, b) => {
+        switch(sortOption) {
+            case 'oldest':
+                return new Date(a.date.split('.').reverse().join('-')) - new Date(b.date.split('.').reverse().join('-'));
+            case 'name':
+                return a.title.localeCompare(b.title);
+            case 'duration':
+                return parseDuration(a.duration) - parseDuration(b.duration);
+            case 'newest':
+            default:
+                return new Date(b.date.split('.').reverse().join('-')) - new Date(a.date.split('.').reverse().join('-'));
+        }
+    });
+    
+    currentVideoPage = 1;
+    renderVideos();
+    updateVideoPagination();
+}
+
+// Парсинг длительности видео (минуты:секунды)
+function parseDuration(duration) {
+    const parts = duration.split(':');
+    return parseInt(parts[0]) * 60 + parseInt(parts[1]);
+}
+
+function updateVideoPagination() {
+    if (!videoPageNumbers || !prevVideoPageBtn || !nextVideoPageBtn) return;
+    
+    const totalPages = Math.ceil(filteredVideos.length / videosPerPage);
+    
+    prevVideoPageBtn.disabled = currentVideoPage === 1;
+    nextVideoPageBtn.disabled = currentVideoPage === totalPages || totalPages === 0;
+    
+    videoPageNumbers.innerHTML = '';
+    
+    if (totalPages <= 1) return;
+    
+    addVideoPageNumber(1)
+    
+    for (let i = Math.max(2, currentVideoPage - 1); i <= Math.min(totalPages - 1, currentVideoPage + 1); i++) {
+        if (i > 1 && i < totalPages) {
+            addVideoPageNumber(i)
+        }
+    }
+    
+    if (totalPages > 1) {
+        addVideoPageNumber(totalPages)
+    }
+    
+    document.querySelectorAll('#video-page-numbers .page-number').forEach(pageBtn => {
+        pageBtn.addEventListener('click', function() {
+            currentVideoPage = parseInt(this.textContent)
+            renderVideos()
+            updateVideoPagination()
+            
+            videoGrid.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        })
+    })
+}
+
+function addVideoPageNumber(page) {
+    const pageNumber = document.createElement('span')
+    pageNumber.className = `page-number ${page === currentVideoPage ? 'active' : ''}`
+    pageNumber.textContent = page
+    videoPageNumbers.appendChild(pageNumber)
+}

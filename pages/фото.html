@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фотогалерея | ООО НПФ «КОМЭКС»</title>
+    <link rel="stylesheet" href="../фотовидео.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                  <div class="logo-icon">
+                      <img src="../лого.png" alt="логотип" style="width: 100%; height: 100px;">
+                  </div>
+                  <div class="logo-text">
+                      <h1>ООО НПФ «КОМЭКС»</h1>
+                      <p>Медиагалерея</p>
+                  </div>
+                </div>
+                
+                <nav class="desktop-menu">
+                    <ul>
+                        <li><a href="фотовидео_главная.html">Главная</a></li>
+                        <li><a href="фото.html" class="active">Фотогалерея</a></li>
+                        <li><a href="видео.html">Видеогалерея</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="page-title">
+            <h2>Фотогалерея</h2>
+        </div>
+        
+        <div class="gallery-controls">
+            <div class="search-box">
+                <img class="search-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NTI0MjQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNlYXJjaC1pY29uIGx1Y2lkZS1zZWFyY2giPjxwYXRoIGQ9Im0yMSAyMS00LjM0LTQuMzQiLz48Y2lyY2xlIGN4PSIxMSIgY3k9IjExIiByPSI4Ii8+PC9zdmc+" alt="">
+                <input type="text" id="video-search" placeholder="Поиск видео...">
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="events">Мероприятия</button>
+                <button class="filter-btn" data-filter="production">Производство</button>
+                <button class="filter-btn" data-filter="team">Команда</button>
+                <button class="filter-btn" data-filter="office">Офис</button>
+                <button class="filter-btn" data-filter="products">Продукция</button>
+            </div>
+            
+            <div class="sort-options">
+                <select id="photo-sort">
+                    <option value="newest">Сначала новые</option>
+                    <option value="oldest">Сначала старые</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="photo-grid" id="photo-grid">
+            <!-- JS добавление фото -->
+        </div>
+        
+        <div class="pagination" id="photo-pagination">
+            <button class="pagination-btn" id="prev-page">Назад</button>
+            <div class="page-numbers" id="page-numbers"></div>
+            <button class="pagination-btn" id="next-page">Вперед</button>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>ООО НПФ «КОМЭКС»</h3>
+                    <p>Медиагалерея компании</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="index.html">Главная</a>
+                    <a href="фото.html">Фотогалерея</a>
+                    <a href="видео.html">Видеогалерея</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <p>+7 (951) 500-65-20</p>
+                    <p>komeks@test.ru</p>
+                </div>
+                
+                <div class="copyright">
+                    <p>2025 ООО НПФ «КОМЭКС». Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/photogallery.js"></script>
+</body>
+</html>
