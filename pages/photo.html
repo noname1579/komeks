@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Видеогалерея | ООО НПФ «КОМЭКС»</title>
+    <title>Фотогалерея | ООО НПФ «КОМЭКС»</title>
     <link rel="stylesheet" href="../фотовидео.css">
 </head>
 <body>
@@ -22,9 +22,9 @@
                 
                 <nav class="desktop-menu">
                     <ul>
-                        <li><a href="фотовидео_главная.html">Главная</a></li>
-                        <li><a href="фото.html"> Фотогалерея</a></li>
-                        <li><a href="видео.html" class="active">Видеогалерея</a></li>
+                        <li><a href="../index.html">Главная</a></li>
+                        <li><a href="photo.html" class="active">Фотогалерея</a></li>
+                        <li><a href="video.html">Видеогалерея</a></li>
                     </ul>
                 </nav>
             </div>
@@ -33,7 +33,7 @@
     
     <main class="container">
         <div class="page-title">
-            <h2>Видеогалерея</h2>
+            <h2>Фотогалерея</h2>
         </div>
         
         <div class="gallery-controls">
@@ -44,30 +44,29 @@
             
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">Все</button>
-                <button class="filter-btn" data-filter="presentation">Презентации</button>
-                <button class="filter-btn" data-filter="report">Репортажи</button>
-                <button class="filter-btn" data-filter="interview">Интервью</button>
-                <button class="filter-btn" data-filter="tutorial">Обучающие</button>
-                <button class="filter-btn" data-filter="event">События</button>
+                <button class="filter-btn" data-filter="events">Мероприятия</button>
+                <button class="filter-btn" data-filter="production">Производство</button>
+                <button class="filter-btn" data-filter="team">Команда</button>
+                <button class="filter-btn" data-filter="office">Офис</button>
+                <button class="filter-btn" data-filter="products">Продукция</button>
             </div>
             
             <div class="sort-options">
-                <select id="video-sort">
+                <select id="photo-sort">
                     <option value="newest">Сначала новые</option>
                     <option value="oldest">Сначала старые</option>
-                    <option value="duration">По длительности</option>
                 </select>
             </div>
         </div>
         
-        <div class="video-grid" id="video-grid">
-            <!-- JS добавление видео -->
+        <div class="photo-grid" id="photo-grid">
+            <!-- JS добавление фото -->
         </div>
         
-        <div class="pagination" id="video-pagination">
-            <button class="pagination-btn" id="prev-video-page">Назад</button>
-            <div class="page-numbers" id="video-page-numbers"></div>
-            <button class="pagination-btn" id="next-video-page">Вперед</button>
+        <div class="pagination" id="photo-pagination">
+            <button class="pagination-btn" id="prev-page">Назад</button>
+            <div class="page-numbers" id="page-numbers"></div>
+            <button class="pagination-btn" id="next-page">Вперед</button>
         </div>
     </main>
     
@@ -81,8 +80,8 @@
                 
                 <div class="footer-links">
                     <a href="index.html">Главная</a>
-                    <a href="photogallery.html">Фотогалерея</a>
-                    <a href="videogallery.html">Видеогалерея</a>
+                    <a href="photo.html">Фотогалерея</a>
+                    <a href="video.html">Видеогалерея</a>
                 </div>
                 
                 <div class="footer-contact">
@@ -96,6 +95,6 @@
             </div>
         </div>
     </footer>
-    <script src="../js/videogallery.js"></script>
+    <script src="../js/photogallery.js"></script>
 </body>
 </html>
