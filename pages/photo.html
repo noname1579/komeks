@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Фотогалерея | ООО НПФ «КОМЭКС»</title>
-    <link rel="stylesheet" href="../фотовидео.css">
+    <link rel="stylesheet" href="../css/фотовидео.css">
+    <link rel="stylesheet" href="../css/modal.css">
 </head>
 <body>
     <header>
@@ -13,10 +14,6 @@
                 <div class="logo">
                   <div class="logo-icon">
                       <img src="../лого.png" alt="логотип" style="width: 100%; height: 100px;">
-                  </div>
-                  <div class="logo-text">
-                      <h1>ООО НПФ «КОМЭКС»</h1>
-                      <p>Медиагалерея</p>
                   </div>
                 </div>
                 
@@ -39,7 +36,7 @@
         <div class="gallery-controls">
             <div class="search-box">
                 <img class="search-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2NTI0MjQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNlYXJjaC1pY29uIGx1Y2lkZS1zZWFyY2giPjxwYXRoIGQ9Im0yMSAyMS00LjM0LTQuMzQiLz48Y2lyY2xlIGN4PSIxMSIgY3k9IjExIiByPSI4Ii8+PC9zdmc+" alt="">
-                <input type="text" id="video-search" placeholder="Поиск видео...">
+                <input type="text" id="photo-search" placeholder="Поиск фото...">
             </div>
             
             <div class="filter-buttons">
@@ -64,9 +61,9 @@
         </div>
         
         <div class="pagination" id="photo-pagination">
-            <button class="pagination-btn" id="prev-page">Назад</button>
-            <div class="page-numbers" id="page-numbers"></div>
-            <button class="pagination-btn" id="next-page">Вперед</button>
+            <button class="pagination-btn" id="prev-photo-page">Назад</button>
+            <div class="page-numbers" id="photo-page-numbers"></div>
+            <button class="pagination-btn" id="next-photo-page">Вперед</button>
         </div>
     </main>
     
@@ -74,8 +71,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h3>ООО НПФ «КОМЭКС»</h3>
-                    <p>Медиагалерея компании</p>
+                    <img src="../лого.png" alt="логотип" style="width: 100%; height: 100px;">
                 </div>
                 
                 <div class="footer-links">
@@ -87,6 +83,7 @@
                 <div class="footer-contact">
                     <p>+7 (951) 500-65-20</p>
                     <p>komeks@test.ru</p>
+                    <p>г. Азов, ул. Московская 75/77, оф. 60</p>
                 </div>
                 
                 <div class="copyright">
@@ -95,6 +92,42 @@
             </div>
         </div>
     </footer>
+
+    <div id="photo-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            
+            <div class="modal-body">
+                <div class="modal-photo-container" id="modal-photo-container">
+                    <div class="photo-placeholder">
+                        <p>Нажмите на фото для увеличения</p>
+                    </div>
+                </div>
+                
+                <div class="modal-photo-info">
+                    <h2 id="modal-photo-title"></h2>
+                    <div class="modal-photo-meta">
+                        <span id="modal-photo-category"></span>
+                        <span id="modal-photo-date"></span>
+                    </div>
+                    
+                    <div class="modal-photo-description">
+                        <p id="modal-photo-description"></p>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button style="font-size: medium;" class="btn modal-btn" id="modal-download-btn">
+                            Скачать
+                        </button>
+                        <button  style="font-size: medium;" class="btn modal-btn secondary" id="modal-share-btn">
+                            Поделиться
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script src="../js/photogallery.js"></script>
 </body>
 </html>
