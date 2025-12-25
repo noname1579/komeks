@@ -1,115 +1,55 @@
 const videos = [
     { 
         id: 1, 
-        title: "Презентация нового оборудования", 
+        title: "Презентация нового оборудования НПФ 'КОМЭКС'", 
         duration: "5:24", 
-        date: "15.05.2023",
+        date: "15.05.2025",
         views: "1.2K",
         category: "presentation", 
         description: "Подробный обзор нового производственного оборудования, внедренного в 2023 году. Демонстрация возможностей и преимуществ.",
-        img: "", 
-        videoUrl: ""
+        img: "../img/видео_презентация.jpg", 
     },
     { 
         id: 2, 
-        title: "Репортаж с корпоратива", 
+        title: "Репортаж с корпоратива НПФ 'КОМЭКС'", 
         duration: "8:12", 
-        date: "10.04.2023",
+        date: "10.04.2025",
         views: "2.4K",
         category: "report", 
         description: "Яркие моменты с ежегодного корпоративного мероприятия компании. Интервью с сотрудниками и руководством.",
-        img: "", 
-        videoUrl: ""
+        img: "../img/видео_корп.jpg", 
     },
     { 
         id: 3, 
-        title: "Интервью с генеральным директором", 
+        title: "Интервью с генеральным директором НПФ 'КОМЭКС'", 
         duration: "12:45", 
-        date: "28.03.2023",
+        date: "28.03.2025",
         views: "3.1K",
         category: "interview", 
         description: "Беседа с руководителем компании о планах развития и новых проектах. Ответы на вопросы о будущем компании.",
-        img: "", 
-        videoUrl: ""
-    },
-    { 
-        id: 4, 
-        title: "Экскурсия по производству", 
-        duration: "7:33", 
-        date: "22.02.2023",
-        views: "1.8K",
-        category: "report", 
-        description: "Видеотур по основным производственным площадкам компании. Показ всех этапов производства продукции.",
-        img: "", 
-        videoUrl: ""
+        img: "../img/видео_интервью.jpg", 
     },
     { 
         id: 5, 
-        title: "Презентация годовых результатов", 
+        title: "Презентация годовых результатов НПФ 'КОМЭКС'", 
         duration: "15:20", 
-        date: "20.01.2023",
+        date: "20.01.2025",
         views: "2.7K",
         category: "presentation", 
         description: "Отчет о деятельности компании за 2022 год и планы на будущее. Финансовые показатели и достижения.",
-        img: "", 
-        videoUrl: ""
+        img: "../img/видео_презентация_2.jpg", 
     },
     { 
         id: 6, 
-        title: "Интервью с ведущим инженером", 
+        title: "Интервью с ведущим инженером НПФ 'КОМЭКС'", 
         duration: "9:15", 
-        date: "15.12.2022",
+        date: "15.12.2025",
         views: "1.5K",
         category: "interview", 
         description: "Рассказ о технических инновациях и разработках компании. Объяснение сложных технологий простым языком.",
-        img: "", 
-        videoUrl: ""
-    },
-    { 
-        id: 7, 
-        title: "Обучающий ролик по технике безопасности", 
-        duration: "6:42", 
-        date: "05.11.2022",
-        views: "3.5K",
-        category: "tutorial", 
-        description: "Подробный инструктаж по технике безопасности на производстве. Правила работы с оборудованием.",
-        img: "", 
-        videoUrl: ""
-    },
-    { 
-        id: 8, 
-        title: "Открытие нового офиса", 
-        duration: "4:18", 
-        date: "28.10.2022",
-        views: "2.1K",
-        category: "event", 
-        description: "Торжественное открытие нового офисного здания компании. Речи руководства и экскурсия по помещениям.",
-        img: "", 
-        videoUrl: ""
-    },
-    { 
-        id: 9, 
-        title: "Обзор продукции 2022", 
-        duration: "10:30", 
-        date: "12.09.2022",
-        views: "2.9K",
-        category: "presentation", 
-        description: "Полный обзор продукции, выпущенной компанией в 2022 году. Характеристики и области применения.",
-        img: "", 
-        videoUrl: ""
-    },
-    { 
-        id: 10, 
-        title: "Мастер-класс по работе с оборудованием", 
-        duration: "18:05", 
-        date: "25.08.2022",
-        views: "1.7K",
-        category: "tutorial", 
-        description: "Подробный мастер-класс по работе с основным производственным оборудованием компании.",
-        img: "", 
-        videoUrl: ""
+        img: "../img/видео_интервью_2.jpg", 
     }
-];
+]
 
 let currentVideoFilter = 'all';
 let currentVideoPage = 1;
@@ -255,7 +195,7 @@ function renderVideos() {
         
         videoElement.innerHTML = `
             <div class="video-thumbnail" style='position: relative; width: 100%; height: 200px; overflow: hidden; cursor: pointer; display: flex; justify-content: center; align-items: center;'>
-                <img src="${video.img || altVideo}" alt="${video.title}" style="width: 100px; height: 100px; object-fit: cover;">
+                <img src="${video.img || altVideo}" alt="${video.title}" style="width: 100%; height: 100%; object-fit: cover;">
 
                 <div class="video-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 10px; color: white; font-size: 14px;">
                     <div style="display: flex; justify-content: space-between;">

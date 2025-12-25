@@ -1,130 +1,76 @@
 const photos = [
     { 
         id: 1, 
-        title: "Корпоративное мероприятие 2024", 
-        date: "15.05.2025", 
+        title: "Корпоративное мероприятие НПФ 'КОМЭКС' 2025", 
+        date: "15.03.2025", 
         category: "events", 
         description: "Ежегодное корпоративное мероприятие для сотрудников компании. Более 200 человек собрались для общения и отдыха.",
-        img: "",
+        img: "../img/корпоративное мероприятие.jpg",
         views: "1.5K"
     },
     { 
-        id: 2, 
-        title: "Производственный цех №1", 
-        date: "22.04.2023", 
-        category: "production", 
-        description: "Основной производственный цех с современным оборудованием. Высокая автоматизация и точность производства.",
-        img: "",
-        views: "2.3K"
-    },
-    { 
         id: 3, 
-        title: "Команда отдела разработки", 
-        date: "10.03.2024", 
+        title: "Команда отдела разработки НПФ 'КОМЭКС'", 
+        date: "10.03.2025", 
         category: "team", 
         description: "Наши талантливые разработчики за работой. Команда из 15 специалистов создает инновационные решения.",
-        img: "",
+        img: "../img/команда.jpg",
         views: "1.8K"
     },
     { 
         id: 4, 
-        title: "Офис компании", 
-        date: "05.02.2022", 
+        title: "Офис НПФ 'КОМЭКС'", 
+        date: "05.12.2025", 
         category: "office", 
         description: "Современный офис с комфортными рабочими местами. Пространство спроектировано для продуктивной работы.",
-        img: "",
+        img: "../img/офис.jpg",
         views: "1.2K"
     },
     { 
         id: 5, 
-        title: "Презентация нового продукта", 
+        title: "Презентация нового продукта НПФ 'КОМЭКС'", 
         date: "18.06.2025", 
-        category: "events", 
+        category: "products", 
         description: "Презентация инновационного продукта для партнеров и клиентов. Успешный запуск нового направления.",
-        img: "",
+        img: "../img/презентация.jpg",
         views: "3.1K"
     },
     { 
         id: 6, 
-        title: "Технологическая линия", 
-        date: "30.01.2023", 
+        title: "Технологическая линия НПФ 'КОМЭКС'", 
+        date: "30.01.2025", 
         category: "production", 
         description: "Автоматизированная технологическая линия с роботизированными системами контроля качества.",
-        img: "",
+        img: "../img/линия.jpg",
         views: "2.5K"
     },
     { 
         id: 7, 
-        title: "Тренинг для сотрудников", 
-        date: "12.04.2024", 
+        title: "Тренинг для сотрудников НПФ 'КОМЭКС'", 
+        date: "12.04.2025", 
         category: "team", 
         description: "Обучающий тренинг по повышению квалификации сотрудников. Внедрение новых методик работы.",
-        img: "",
+        img: "../img/тренинг.jpg",
         views: "1.4K"
     },
     { 
         id: 8, 
-        title: "Переговорная комната", 
-        date: "08.03.2025", 
+        title: "Переговорная комната НПФ 'КОМЭКС'", 
+        date: "08.03.2024", 
         category: "office", 
         description: "Современная переговорная для встреч с клиентами. Оснащена мультимедийным оборудованием.",
-        img: "",
+        img: "../img/переговоры.jpg",
         views: "1.1K"
     },
     { 
         id: 9, 
         title: "Выставка промышленного оборудования", 
-        date: "25.05.2025", 
+        date: "25.05.2024", 
         category: "events", 
-        description: "Участие в международной выставке промышленного оборудования. Представление новейших разработок.",
-        img: "",
+        description: "Участие НПФ 'КОМЭКС' в международной выставке промышленного оборудования. Представление новейших разработок.",
+        img: "../img/выставка.jpg",
         views: "2.7K"
     },
-    { 
-        id: 10, 
-        title: "Контроль качества продукции", 
-        date: "14.02.2024", 
-        category: "production", 
-        description: "Строгий контроль качества на каждом этапе производства. Использование передовых технологий проверки.",
-        img: "",
-        views: "1.9K"
-    },
-    { 
-        id: 11, 
-        title: "Продукция компании", 
-        date: "20.06.2022", 
-        category: "products", 
-        description: "Готовая продукция перед отправкой клиентам. Каждая единица проходит финальный осмотр.",
-        img: "",
-        views: "2.1K"
-    },
-    { 
-        id: 12, 
-        title: "Совещание руководителей", 
-        date: "20.06.2024", 
-        category: "team", 
-        description: "Еженедельное совещание руководящего состава. Обсуждение стратегических вопросов развития.",
-        img: "",
-        views: "1.3K"
-    },
-    { 
-        id: 13, 
-        title: "Ресепшн", 
-        date: "03.01.2025", 
-        category: "office", 
-        description: "Приемная компании, где мы встречаем гостей. Современный дизайн и комфортная атмосфера.",
-        img: "",
-        views: "1.6K"
-    },
-    { 
-        id: 14, 
-        title: "Новое оборудование", 
-        date: "11.04.2023", 
-        category: "products", 
-        description: "Новейшее оборудование, поступившее на производство. Увеличение производительности на 40%.",
-        img: "",
-        views: "2.4K"
-    }
 ];
 
 let currentPhotoFilter = 'all';
@@ -273,7 +219,7 @@ function renderPhotos() {
         
         photoElement.innerHTML = `
             <div class="photo-thumbnail" style='position: relative; width: 100%; height: 200px; overflow: hidden; cursor: pointer; display: flex; justify-content: center; align-items: center; background-color: var(--complementary-color);'>
-                <img src="${photo.img || altPhoto}" alt="${photo.title}" style="width: 70%; height: 70%; object-fit: contain; padding: 20px;">
+                <img src="${photo.img || altPhoto}" alt="${photo.title}" style="width: 100%; height: 100%; object-fit: cover;">
                 <div class="photo-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 10px; color: white; font-size: 14px;">
                     <div style="display: flex; justify-content: space-between;">
                         <span>${photo.date}</span>
@@ -324,7 +270,7 @@ function openModal(photo) {
 function updateModalPhotoContainer(photo) {
     modalPhotoContainer.innerHTML = `
         <div class="photo-placeholder" style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--accent-color); cursor: pointer;">
-            <img src="${photo.img || altPhoto}" alt="${photo.title}" style="width: 300px; height: 300px; object-fit: contain; padding: 20px;">
+            <img src="${photo.img || altPhoto}" alt="${photo.title}" style="width: 100%; height: 100%; object-fit: cover; padding: 20px;">
         </div>
     `;
     
