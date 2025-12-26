@@ -254,7 +254,7 @@ function openModal(video) {
 function updateModalVideoContainer(video) {
     modalVideoContainer.innerHTML = `
         <div class="video-placeholder" style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; cursor: pointer;" onclick="window.open('${video.videoUrl || '#'}', '_blank')">
-            <img src="${video.img || altVideo}" alt="${video.title}" style="width: 100px; height: 100px; object-fit: cover;">
+            <img src="${video.img || altVideo}" alt="${video.title}" style="width: 300px; height: 300px; object-fit: cover;">
         </div>
     `;
 }
